@@ -144,10 +144,11 @@ class SdslContainer extends React.Component{
         this.refs.WdSelectComponent.showModal();
     }
     /*移交确认*/
-    handleYJConfirm(value){
+    handleYJConfirm(wdid,wdname){
         let _formData = new FormData();
         _formData.append('token',this.props.token);
-        _formData.append("wd",value[1]);//移交网点参数
+        _formData.append("wd",wdid);//移交网点参数
+        _formData.append("wdname",wdname);
         _formData.append("ids",this.state.selectedRowKeys);//被移交的数据id
         this.props.dispatch(doTransferRequest(_formData,this.condition));
         this.refs.WdSelectComponent.handleCancel();

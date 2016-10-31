@@ -27,6 +27,7 @@ import StreetContainer from 'component/StreetContainer';
 import ReasonContainer from 'component/ReasonContainer';
 import UserContainer from 'component/UserContainer';
 import PasswordContainer from 'component/PasswordContainer';
+import StatistContainer from 'component/StatistContainer';
 
 require('css/base.css');
 require('css/iconfont.css');
@@ -61,6 +62,7 @@ ReactDOM.render(
                     <Route path="REASON" component={ReasonContainer}></Route>
                     <Route path="CUSTOM" component={UserContainer}></Route>
                     <Route path="PASSWORD" component={PasswordContainer}></Route>
+                    <Route path="STATISTICS" component={StatistContainer}></Route>
                 </Route>
             </Route>
         </Router>

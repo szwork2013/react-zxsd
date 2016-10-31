@@ -30,7 +30,7 @@ const config = {
     },
     resolve:{
         modulesDirectories: ['node_modules', path.join(__dirname, '../node_modules')],
-        extensions:["",'.web.js',".js",'.json'],
+        extensions:["",".js",'.json'],
         alias: {
             core: srcDir + "/js/core",
             ui:srcDir+"/js/ui",

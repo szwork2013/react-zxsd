@@ -12,6 +12,7 @@ class WdSelectComponent extends React.Component{
     constructor(props){
         super(props);
         this.wd = "";
+        this.wdname = "";
         this.state = {
             visible : false,
         }
@@ -26,14 +27,15 @@ class WdSelectComponent extends React.Component{
             visible : false,
         })
     }
-    handleChange(value) {
-        this.wd = value;
+    handleChange(value,key) {
+        this.wd =  key[1].value;
+        this.wdname = key[1].label;
     }
     handleOk(){;
         if(!this.wd){
             message.error('请选择移交的网点！',2);
         }else{
-            this.props.handleYJConfirm(this.wd);
+            this.props.handleYJConfirm(this.wd, this.wdname);
         }
     }
     render(){

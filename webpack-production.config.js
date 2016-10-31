@@ -25,13 +25,12 @@ if (pkg.theme && typeof(pkg.theme) === 'string') {
 
 const config  = {
     entry: {
-        wxsd: path.resolve(__dirname, 'app/wxsd.js'),
-        vender:['swiper'],//第三方库
+        manage: path.resolve(__dirname, 'app/manage.js'),
     },
     resolve:{
         //When require, do not have to add these extensions to file's name
         modulesDirectories: ['node_modules', path.join(__dirname, '../node_modules')],
-        extensions:["",'.web.js',".js",'.json'],
+        extensions:["",".js",'.json'],
         alias: {
             core: srcDir + "/js/core",
             ui:srcDir+"/js/ui",
@@ -54,7 +53,6 @@ const config  = {
     plugins: [
         //提供全局的变量，在模块中使用无需用require引入
         new webpack.ProvidePlugin({
-            Swiper:"swiper",
             // nie: "nie"
         }),
         //Minify the bundle
@@ -73,7 +71,7 @@ const config  = {
             }
         }),
         /*css单独打包*/
-        new ExtractTextPlugin("jcx.css"),
+        new ExtractTextPlugin("zxsdmanage.css"),
         new TransferWebpackPlugin([
             {from: 'www'},
         ], path.resolve(__dirname, "app")),
@@ -102,7 +100,7 @@ const config  = {
     eslint:{
         configFile:'.eslintrc',
     },
-    postcss: [px2rem()],
+    //postcss: [px2rem()],
 };
 
 module.exports = config;

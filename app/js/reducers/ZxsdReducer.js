@@ -10,8 +10,10 @@ import { StreetReducer } from 'reducers/StreetReducer';
 import { ReasonReducer } from 'reducers/ReasonReducer';
 import { MainReducer } from 'reducers/MainReducer';
 import { LogReducer } from 'reducers/LogReducer';
+import { StatistReducer } from 'reducers/StatistReducer';
 
 export const ZxsdReducer  = combineReducers({
+    StatistReducer,
     LogReducer,
     MainReducer,
     ReasonReducer,

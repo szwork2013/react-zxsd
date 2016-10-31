@@ -58,8 +58,8 @@ export const getDKApplyListRequest = ( _formData ) =>{
  *  model:贷款件移交网点
  *  auhtor:jcx
  *  date:2016-10-14
- *  prarmName:{wd, ids}
- *  paramData:{"1",["54","55"]}
+ *  prarmName:{wd,wdname ids}
+ *  paramData:{"1","营业部",["54","55"]}
  *  paramInfo:{移交网点，移交贷款件}
  *  */
 export const doTransferRequest = ( _formData,condition ) => {

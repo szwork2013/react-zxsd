@@ -24,4 +24,5 @@ export const GET_USER_LIST = 'getUserList';
 export const LOADING = 'loading';
 export const LOADED = 'loaded';
 export const GET_DKAPPLYLOG_LIST = 'getApplyLogList';
+export const GET_STATIST_LIST = 'getStatistList';
 
