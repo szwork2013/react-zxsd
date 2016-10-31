@@ -1,0 +1,495 @@
+@basecolor :@primary-color;
+@backgroundcolor:#f2f2f2;
+@bordercolor: #d9d9d9;
+@fontcolor:#d1d1d1;
+
+/*minix*/
+
+.text-overflow(){
+  display:block;
+  word-break: keep-all;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.table-address(){
+  width:110px;
+  .text-overflow();
+}
+
+/*公用模块*/
+@lite-space : lite-space;
+.@{lite-space}{
+  display:inline-block;
+  width:100%;
+  vertical-align: middle;
+}
+
+@loginModuleCls : login-module;/*登录模块*/
+@loginFormCls : login-form;/*登录表单*/
+@mainModuleCls : main-module;/*主模块*/
+@navModuleCls : nav-container;/*主模块导航容器*/
+@sidebarModuleCls : sidebar-container;/*主模块侧边栏容器*/
+@contentModuleCls : content-container;/*主模块内容容器*/
+
+.@{loginModuleCls}{
+  display:flex;
+  display: -webkit-box;
+  display:-webkit-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  background-color:#fff;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  &-feature{
+    position:relative;
+    background-image: url(https://dn-st.b0.upaiyun.com/talk-account/images/brand-bg.8a0b7f34.jpg);
+    background-size:cover;
+    background-position:100% center;
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:flex;
+    -webkit-box-pack:start;
+    .brand-cover{
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      z-index: 10;
+    }
+  }
+  &-container{
+    padding-top:14vh;
+    padding-bottom:14vh;
+    margin:0 auto;
+    overflow: auto;
+    & .@{loginFormCls}-header{
+      display:flex;
+      display:-webkit-flex;
+      display:-webkit-box;
+      font-size: 16px;
+      line-height: 49px;
+      .login-tab{
+        display: block;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        color:@fontcolor;
+        text-align: center;
+        border-bottom:1px solid @bordercolor;
+        corsor:pointer;
+      }
+      .is-selected{
+        color:@basecolor;
+        border-bottom:1px solid @basecolor;
+      }
+    }
+  }
+  @media screen and (min-width:800px){
+    &-feature{
+      width:35%;
+      padding-top:28vh;
+    }
+
+  }
+  @media screen and (max-width:800px){
+    &-feature{
+      padding-top:40px;
+    }
+  }
+}
+/*登录表单*/
+.@{loginFormCls}{
+
+  .@{loginFormCls}-input-wrapper{
+    position: relative;
+    border-bottom:1px solid @bordercolor;
+    .@{loginFormCls}-input{
+      border:none;
+      height:47px;
+      width:380px;
+      padding:0 10px;
+      font-size: 14px;
+    }
+  }
+  .@{loginFormCls}-submit{
+    position: relative;
+    line-height: 1.5em;
+    .@{loginFormCls}-submitbotton{
+      background-color:@basecolor;
+      font-size: 16px;
+      line-height: 48px;
+    }
+  }
+  @midia screen and (min-width:800px){
+    width:380px;
+  }
+}
+
+@mainloadCls : main-load;
+/*登陆后的页面加载*/
+.@{mainloadCls}{
+  position: absolute;
+  top:50%;
+  left:50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  p{
+    margin-top:12px;
+    font-size:16px;
+    color:#333;
+
+  }
+}
+/*主模块*/
+.@{mainModuleCls}{
+  height:100%;
+  .@{mainModuleCls}-wrapper{
+    position: relative;
+    background-color:@backgroundcolor;
+    height:100%;
+    overflow: auto;
+    padding-top:60px;
+    padding-bottom:15px;
+  }
+}
+/*主模块导航栏*/
+@login-wrapper : login-wrapper;
+@breadcrumb-wrapper : breadcrumb-wrapper;
+@userpanel-wrapper : userpanel-wrapper;
+.@{navModuleCls}{
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:60px;
+  padding:0 20px;
+  background-color:@basecolor;
+  z-index: 3;
+  &:after{
+    content:'';
+    position: absolute;
+    top:0;
+    left:-4px;
+    right:-4px;
+    height:100%;
+    box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+    z-index: -1;
+  }
+  & .@{navModuleCls}-wrapper{
+    display:flex;
+    display:-webkit-flex;
+    display:-webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-align: center;
+    height:100%;
+    .ant-btn{
+      border: none;
+      width: 24px;
+      height: 24px;
+      background: transparent;
+      color: hsla(0,0%,100%,.8);
+      padding: 0;
+      line-height: 1;
+      font-size: 0;
+      transition: color .1s;
+      -webkit-transition: color .1s;
+      :hover{
+        color:#fff;
+      }
+     .anticon{
+        font-size:24px;
+      }
+    }
+    .@{login-wrapper}{
+      display:flex;
+      display:-webkit-flex;
+      display:-webkit-box;
+      .login-area{
+        width:156px;
+        margin:0;
+        padding:0;
+        padding-left:20px;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1;
+        color:#fff;
+        a{
+          transition: all .1s;
+          font-size: 0;
+          background-image:url(../images/logo_zxsd.png);
+          background-position: 50%;
+          background-repeat: no-repeat;
+          background-size: contain;
+          width: 90px;
+          height: 22.6px;
+          display: block;
+        }
+      }
+    }
+    .@{breadcrumb-wrapper}{
+      display:flex;
+      display:-webkit-flex;
+      display:-webkit-box;
+      -webkit-box-flex: 3;
+      padding: 0 10px 0 30px;
+      .ant-breadcrumb-link {
+        font-size: 16px;
+        color: hsla(0,0%,100%,.9);
+        font-weight: 700;
+      }
+      .ant-breadcrumb-separator {
+        color: hsla(0,0%,100%,.9);
+      }
+    }
+    .@{userpanel-wrapper} {
+      display:flex;
+      display:-webkit-flex;
+      display:-webkit-box;
+      -webkit-box-align: center;
+      .user-profile-toggle-botton{
+        width:auto;
+        .avatar{
+          display: inline-block;
+          vertical-align: baseline;
+          width:20px;
+          height:20px;
+          border-radius:100%;
+          border:2px solid hsla(0,0%,100%,.8);
+          background:#fff;
+          background-size:cover;
+          background-position:50%;
+          background-repeat:no-repeat;
+        }
+        .text{
+          display: inline-block;
+          padding-left:10px;
+          font-size:14px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+        .arrow-down{
+          font-size: 16px;
+        }
+      }
+      .ant-btn{
+        display: inline-block;
+        margin-left:20px;
+      }
+    }
+  }
+}
+
+/*主模块侧边栏*/
+.@{sidebarModuleCls}{
+  position: fixed;
+  top:60px;
+  left:0;
+  bottom:0;
+  width:200px;
+  padding:15px 5px;
+  z-index: 2;
+  transition: all cubic-bezier(.645,.045,.355,1) .4s;
+  background-color: @backgroundcolor;
+  .ant-menu{
+    .ant-menu-item:hover,
+    .ant-menu-item-active,
+    .ant-menu-submenu-active,
+    .ant-menu-submenu-title:hover {
+      background-color: shade(@backgroundcolor, 5%);
+    }
+    .ant-menu-submenu,
+    .ant-menu-item{
+      font-size: 14px;
+      i{
+        font-size: 20px;
+      }
+      span{
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+/*主内容模块*/
+.@{contentModuleCls}{
+  position: relative;
+  min-height: 100%;
+  padding:15px 20px 0 230px;
+  transition: padding-left cubic-bezier(.645,.045,.355,1) .4s;
+  z-index: 1;
+  .x-box{
+    padding:15px;
+    background-color:#fff;
+    box-shadow:0 2px 1px 1px rgba(0,0,0,.05);
+  }
+}
+/*通用筛选栏模块*/
+@serachCls : search-wrapper;
+.@{serachCls}{
+  padding:12px 0;
+  .search-item{
+    display: inline-block;
+    margin-left:12px;
+    margin-bottom:12px;
+    label{
+      margin-right:12px;
+    }
+  }
+  .serach-btn-group{
+    display: inline-block;
+    margin-left:12px;
+  }
+  .serach-count{
+    float: right;
+    display: inline-block;
+    letter-spacing: 4px;
+  }
+  .operation-btn-group{
+    text-align: right;
+  }
+}
+/*申贷受理模块*/
+@sdslCls : sdsl-wrapper;
+.@{sdslCls}{
+  min-width: 1000px;
+  .ant-table-body{
+    td.address{
+      .table-address();
+    }
+    .未受理>span{
+      display:inline-block;
+      margin-right:8px;
+      width:8px;
+      height:8px;
+      border-radius: 50%;
+      background-color:#CCCCCC;
+    }
+    .受理中>span{
+      display:inline-block;
+      margin-right:8px;
+      width:8px;
+      height:8px;
+      border-radius: 50%;
+      background-color: #27BDF5;
+    }
+    .受理成功>span{
+      display:inline-block;
+      margin-right:8px;
+      width:8px;
+      height:8px;
+      border-radius: 50%;
+      background-color: #87D068;
+    }
+    .拒绝受理>span{
+      display:inline-block;
+      margin-right:8px;
+      width:8px;
+      height:8px;
+      border-radius: 50%;
+      background-color:#FF5500;
+    }
+  }
+}
+/*申请件详情对话框*/
+@applyModalCls : applyModal;
+.@{applyModalCls}{
+  .ant-modal-body{
+    max-height:450px;
+    overflow: auto;
+  }
+}
+/*操作日志*/
+@logCls : log-wrapper;
+.@{logCls}{
+  .ant-table-body{
+    .center{
+      text-align: center;
+    }
+  }
+}
+/*网点管理模块*/
+@wdCls : wd-wrapper;
+.@{wdCls}{
+  min-width: 1000px;
+}
+/*街道管理模块*/
+@streetCls : street-wrapper;
+.@{streetCls}{
+  min-width:1000px;
+  .ant-table-body {
+    .启用>span {
+      display: inline-block;
+      margin-right: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #87D068;
+    }
+    .禁用>span {
+      display: inline-block;
+      margin-right: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #CCCCCC;
+    }
+  }
+}
+/*原因管理模块*/
+@reasonCls : reason-wrapper;
+.@{reasonCls}{
+  min-width: 1000px;
+  .ant-table-body {
+    .启用>span {
+      display: inline-block;
+      margin-right: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #87D068;
+    }
+    .禁用>span {
+      display: inline-block;
+      margin-right: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #CCCCCC;
+    }
+  }
+}
+/*用户管理模块*/
+@userCls : user-wrapper;
+.@{userCls}{
+  min-width: 1000px;
+  .ant-upload{
+    display:inline-block;
+  }
+  .ant-table-body {
+    .启用>span {
+      display: inline-block;
+      margin-right: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #87D068;
+    }
+    .禁用>span {
+      display: inline-block;
+      margin-right: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #CCCCCC;
+    }
+  }
+}
