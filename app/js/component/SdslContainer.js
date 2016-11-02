@@ -289,7 +289,7 @@ class SdslContainer extends React.Component{
                         <label className="search-wrapper-label">贷款状态</label>
                         <Select defaultValue="全部" style={{ width: 120 }} onSelect={this.onHandleSelect.bind(this,"state")}>
                             <Option value="">全部</Option>
-                            <Option value="未处理">未受理</Option>
+                            <Option value="未受理">未受理</Option>
                             <Option value="受理中">受理中</Option>
                             <Option value="受理成功">受理成功</Option>
                             <Option value="拒绝受理">拒绝受理</Option>
