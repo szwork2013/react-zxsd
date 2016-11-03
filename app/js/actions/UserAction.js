@@ -20,7 +20,7 @@ export const initialUserAction = (json) => {
 export const loginAction = (token) => {
     sessionStorage.setItem('token',  token);
     return {
-        type    : 'loginSuccess',
+        type    :LOGIN_SUCCESS,
         token   : token,
     }
 }
@@ -93,7 +93,7 @@ export const loginRequest = (_formData) => {
                         dispatch(loginAction(data.token));
                         let _formData = new FormData();
                         _formData.append('token',data.token);
-                        dispatch(push('/WxsdManageMain'));
+                        dispatch(initialUserRequest(_formData));
 
                     }else{
                         message.error(data.msg,2);

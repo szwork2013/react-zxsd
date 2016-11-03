@@ -12,7 +12,7 @@ export function requireAuthentication(Component) {
             let _token = sessionStorage.getItem('token');
             console.log(typeof _token);
             console.log(_token);
-            if(_token != undefined && _token != null & _token != 'null'){
+            if(_token !== undefined && _token !== null && _token !== 'null' && !this.props.isAuthenticated){//刷新的時候
                 this.props.dispatch(loginLocalRequest(_token));
             }else{
                 this.checkAuth(this.props.isAuthenticated);
@@ -35,7 +35,7 @@ export function requireAuthentication(Component) {
         render () {
             return (
                 <div>
-                    {this.props.isAuthenticated === true && this.props.authList.length > 0
+                    {this.props.isAuthenticated === true && this.props.wdid
                         ? <Component {...this.props}/>
                         :<div className="main-load"> <Spin size="large"></Spin><p>加载中</p></div>
                     }
@@ -50,6 +50,7 @@ export function requireAuthentication(Component) {
         name: state.UserReducer.name,
         isAuthenticated: state.UserReducer.isAuthenticated,
         authList : state.UserReducer.authList,
+        wdid : state.UserReducer.wdid,
     });
 
     return connect(mapStateToProps)(AuthenticatedComponent);

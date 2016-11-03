@@ -14,8 +14,7 @@ class WxsdManageLogin extends React.Component{
         super(props);
 
     }
-    componentWillUpdate(  nextProps,  nextState){
-    }
+
     handlerLogin(_user){
         let { cust_no, password } = _user;
         if(cust_no === "" || password === ""){

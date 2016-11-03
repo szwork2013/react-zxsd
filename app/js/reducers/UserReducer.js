@@ -33,6 +33,7 @@ export const UserReducer  = function(state = {
                 isAuthenticated : false,
                 token :null,
                 name : null,
+                wdid : null,
             })
         case GET_USER_LIST:
             return Object.assign({},state,{
