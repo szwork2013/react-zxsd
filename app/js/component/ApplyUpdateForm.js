@@ -4,23 +4,11 @@
 
 import React from 'react';
 import ReactDom from 'react-dom';
-import {Row,Col, Form, Input, Select, Cascader, Radio } from 'antd';
+import {Row,Col, Form, Input, Select, Cascader,InputNumber } from 'antd';
 const FormItem = Form.Item;
 const createForm = Form.create;
 const Option = Select.Option;
-const RadioButton = Radio.Button;
-const RadioGroup = Radio.Group;
 
-const guarantee = [{
-    value:'1',
-    label:'信用',
-},{
-    value:'2',
-    label:'担保',
-},{
-    value:'3',
-    label:'抵质押',
-}]
 class ApplyUpdateForm extends React.Component{
     constructor(props){
         super(props);
@@ -147,10 +135,10 @@ class ApplyUpdateForm extends React.Component{
                         >
                             {getFieldDecorator('money',{
                                 rules: [
-                                    { required: true, message: '请填写贷款金额' },
+                                    { required: true, message: '请填写申请金额' },
                                 ],
                             })(
-                                <Input id="qx" placeholder="请填写贷款金额" addonAfter="万" disabled={this.props.optype}/>
+                                <Input id="money" placeholder="请填写申请金额" addonAfter="万元" disabled={this.props.optype}/>
                             )}
                         </FormItem>
                     </Col>
@@ -162,40 +150,24 @@ class ApplyUpdateForm extends React.Component{
                         >
                             {getFieldDecorator('contract',{
                                 rules: [
-                                    { required: true, message: '请填写贷款合同号' },
+                                    { required: true,len : 16, message: '请填写16位贷款合同号' },
                                 ],
                             })(
                                 <Input id="contract" placeholder="请填写贷款合同号" disabled={this.props.optype}/>
                             )}
                         </FormItem>
                         <FormItem
-                            id="guarantee"
-                            label="担保方式"
+                            id="realmoney"
+                            label="贷款金额"
                             {...formItemLayout}
                         >
-                            {getFieldDecorator('guarantee',{
+                            {getFieldDecorator('realmoney',{
+                                width:"100",
                                 rules: [
-                                    { required: true, message: '请选择担保方式' },
+                                    { required:true,type:'number',max:999,message: '请填写正确的贷款金额' },
                                 ],
                             })(
-                                <RadioGroup disabled={this.props.optype}>
-                                    <RadioButton value="1">信用</RadioButton>
-                                    <RadioButton value="2">担保</RadioButton>
-                                    <RadioButton value="3">抵质押</RadioButton>
-                                </RadioGroup>
-                            )}
-                        </FormItem>
-                        <FormItem
-                            id="cust_no"
-                            label="办理柜员号"
-                            {...formItemLayout}
-                        >
-                            {getFieldDecorator('cust_no',{
-                                rules: [
-                                    { required: true,type:'string',len:7, message: '请填写办理柜员号(7位数)' },
-                                ],
-                            })(
-                                <Input id="cust_no" placeholder="请填写办理柜员号" disabled={this.props.optype}/>
+                                <InputNumber id="realmoney" placeholder="请填写贷款金额"  addonAfter="万元" disabled={this.props.optype} />
                             )}
                         </FormItem>
                     </Col>
@@ -217,8 +189,7 @@ module.exports = createForm({
             qx : {value:props.apply.qxid},
             money : {value:props.apply.money},
             contract : {value:props.apply.contract},
-            guarantee : {value:props.apply.guarantee},
-            cust_no : {value:props.apply.cust_no},
+            realmoney : {value:props.apply.realmoney},
         };
     },
 })(ApplyUpdateForm);

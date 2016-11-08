@@ -12,6 +12,7 @@ export const SdslReducer  = function(state = {
     prodList:[],
     regionList:[],
     applyTableLoading:true,
+    zhList : [],
 },action){
     switch (action.type){
         case GET_DKAPPLY_LIST:
@@ -23,6 +24,7 @@ export const SdslReducer  = function(state = {
                 prodList : action.prodList,
                 qxList : action.qxList,
                 regionList : action.regionList,
+                zhList : action.zhList,
             })
         default:
             return state;

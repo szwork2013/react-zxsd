@@ -21,6 +21,7 @@ export const getDkApplyListAction = (json) =>{
         prodList : json.prodList,
         qxList : json.qxList,
         regionList : json.regionList,
+        zhList : json.zhList,
     }
 }
 
@@ -43,7 +44,6 @@ export const getDKApplyListRequest = ( _formData ) =>{
                 .then(checkHttpStatus)
                 .then(parseJSON)
                 .then(data => {
-                    console.log(data);
                     dispatch(getDkApplyListAction(data))
                 })
                 .catch( error => {;
@@ -148,7 +148,6 @@ export  const doUpdateApply = ( _formData,condition ) =>{
             .then(checkHttpStatus)
             .then(parseJSON)
             .then( data => {
-                console.log(data);
                 if(data.status === '2002'){
                     let _formData = new FormData();
                     _formData.append('token',data.token);

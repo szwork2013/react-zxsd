@@ -5,7 +5,8 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack-dev-server.config.js --progress --inline --colors",
     "build": "webpack --config webpack-production.config.js --progress --colors",
-    "lint": "eslint app && echo \"eslint: no lint errors\""
+    "lint": "eslint app && echo \"eslint: no lint errors\"",
+    "babel" : "babel -d lib/ src/"
   },
   "theme": "./theme.js",
   "author": "jcx",
@@ -13,6 +14,8 @@
   "dependencies": {
     "antd": "^2.0.0",
     "antd-mobile": "^0.8.5",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
     "es6-promise": "^4.0.5",
     "fetch": "^1.1.0",
     "postcss-plugin-px2rem": "^0.6.0",

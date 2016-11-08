@@ -3,20 +3,24 @@ import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
 import { Spin } from 'antd';
 import { loginLocalRequest } from 'actions/UserAction';
+import {getBrowerType} from 'core/Util';
 
 export function requireAuthentication(Component) {
 
     class AuthenticatedComponent extends React.Component {
 
         componentWillMount () {
-            let _token = sessionStorage.getItem('token');
-            console.log(typeof _token);
-            console.log(_token);
-            if(_token !== undefined && _token !== null && _token !== 'null' && !this.props.isAuthenticated){//刷新的時候
-                this.props.dispatch(loginLocalRequest(_token));
+            if(getBrowerType().webkit){//浏览器兼容判断
+                let _token = sessionStorage.getItem('token');
+                if(_token !== undefined && _token !== null && _token !== 'null' && !this.props.isAuthenticated){//刷新的時候
+                    this.props.dispatch(loginLocalRequest(_token));
+                }else{
+                    this.checkAuth(this.props.isAuthenticated);
+                }
             }else{
-                this.checkAuth(this.props.isAuthenticated);
+                this.uncompatible();
             }
+
         }
 
         componentWillReceiveProps (nextProps) {
@@ -28,10 +32,14 @@ export function requireAuthentication(Component) {
                 let redirectAfterLogin = this.props.location.pathname;
                 this.props.history.push({
                     pathname : '/login',
-                })
+                });
             }
         }
-
+        uncompatible() {
+            this.props.history.replace({
+                pathname : '/uncompatible',
+            });
+        }
         render () {
             return (
                 <div>

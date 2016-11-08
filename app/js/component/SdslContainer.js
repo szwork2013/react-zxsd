@@ -157,12 +157,13 @@ class SdslContainer extends React.Component{
         });
     }
     /*拒绝确认*/
-    handleJJConfirm(value){
+    handleJJConfirm(reasonid,reasoncontent){
         let _formData = new FormData();
         _formData.append("state",4);
         _formData.append('token',this.props.token);
         _formData.append('ids',this.state.selectedRowKeys);
-        _formData.append('reason',value);//拒绝原因id
+        _formData.append('reasoncontent',reasoncontent);
+        _formData.append('reason',reasonid);//拒绝原因id
         this.props.dispatch(doStateChangeRequest(_formData,this.condition));
         this.refs.ReasonSelectComponent.handleCancel();
         this.setState({
@@ -221,24 +222,21 @@ class SdslContainer extends React.Component{
             dataIndex:'certno',
             key:'certno',
         },{
-            title:'地址',
-            dataIndex:'addr',
-            key:'addr',
-            width:100,
-            className:'address',
-            render: text => <Tooltip  title={text}><span>{text}</span></Tooltip>
-        },{
             title:'期限(年)',
             dataIndex:'qx',
             key:'qx',
             sorter: (a, b) => a.qx - b.qx,
             sortOrder: sortedInfo.columnKey === 'qx' && sortedInfo.order,
         },{
-            title:'金额(万)',
+            title:'申请金额(万)',
             dataIndex:'money',
             key:'money',
             sorter: (a, b) => a.money - b.money,
             sortOrder: sortedInfo.columnKey === 'money' && sortedInfo.order,
+        },{
+            title:'意向网点',
+            dataIndex:'wd',
+            key:'wd',
         },{
             title:'申请日期',
             dataIndex:'addtime',
@@ -254,18 +252,18 @@ class SdslContainer extends React.Component{
             render: (text,record) =>
                 (<a>
                     <span href="#" onClick={this.handleViewDetail.bind(this,record.key,record)}>查看</span>
-                          <span className="ant-divider"></span>
-                    <span href="#" onClick={this.handleYJ.bind(this,record.key)}>移交</span>
                     <span className="ant-divider"></span>
-                    <Dropdown overlay={
-                        <Menu onClick={this.handleMenuClick.bind(this,record.key,record)}>
-                            <Menu.Item key="sling">受理中</Menu.Item>
-                            <Menu.Item key="sled">受理成功</Menu.Item>
-                            <Menu.Item key="notsl">拒绝受理</Menu.Item>
-                        </Menu>} >
-                        <span>
-                            申贷受理 <Icon type="xiangxiajiantou" />
-                        </span>
+                    <span href="#" onClick={this.handleYJ.bind(this,record.key)} className={ record.state === '未受理' ?  "" : "yj-disable" }>移交</span>
+                    <span className="ant-divider"></span>
+                    <Dropdown
+                        overlay={<Menu onClick={this.handleMenuClick.bind(this,record.key,record)}>
+                                        <Menu.Item key="sling" disabled={record.state !== '未受理'  ? true : false}>受理中</Menu.Item>
+                                        <Menu.Item key="sled"  disabled={record.state === '受理成功' || record.state === '拒绝受理'  ? true : false}>受理成功</Menu.Item>
+                                        <Menu.Item key="notsl" disabled={record.state === '受理成功' || record.state === '拒绝受理'  ? true : false}>拒绝受理</Menu.Item>
+                                 </Menu>}
+                        trigger = 'click'
+                    >
+                        <Button  type="ghost" icon="xiangxiajiantou" disabled={record.state === '受理成功' || record.state === '拒绝受理' ? true : false}>申贷受理</Button>
                     </Dropdown>
                 </a>),
         }];
@@ -306,22 +304,6 @@ class SdslContainer extends React.Component{
                     </section>
                     <section className="serach-count">
                         选择了:<span>{this.state.selectedRowKeys.length}条</span> 总计:<span >{this.props.dkApplyList.length}条</span >
-
-                        <Button type="ghost" style={{marginLeft:"12px"}} onClick={this.handleYJ.bind(this,this.state.selectedRowKeys)}>
-                            移交
-                        </Button>
-                        <Dropdown overlay={  <Menu onClick={this.handleMenuClick.bind(this,this.state.selectedRowKeys,null)}>
-                                                <Menu.Item key="sling">受理中</Menu.Item>
-                                                <Menu.Item key="notsl">拒绝受理</Menu.Item>
-                                            </Menu>}>
-                            <Button type="primary" style={{ marginLeft: 8 }}>
-                                申贷受理 <Icon type="xiangxiajiantou" />
-                            </Button>
-
-                        </Dropdown>
-                    </section>
-                    <section className="operation-btn-group">
-
                     </section>
                 </div>
                 <Table
@@ -350,10 +332,10 @@ class SdslContainer extends React.Component{
                 <ApplyImproveComponent
                     ref="ApplyImproveComponent"
                     title="客户资料"
-                    handleWSConfirm={this.handleWSConfirm.bind(this)}
                     prodList = {this.props.prodList}
                     qxList = {this.props.qxList}
                     regionList = {this.props.regionList}
+                    handleWSConfirm={this.handleWSConfirm.bind(this)}
                 >
                 </ApplyImproveComponent>
             </div>

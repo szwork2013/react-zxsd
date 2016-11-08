@@ -3,16 +3,16 @@
  */
 import React from 'react';
 import ReactDom from 'react-dom';;
-import { Select, Modal, Button, message } from 'antd';
+import { Select, Modal, Button, message,Input } from 'antd';
 const Option = Select.Option;
 
 class ReasonSelectComponent extends React.Component{
     constructor(props){
         super(props);
-        this.reasonid = "";
         this.state = {
             reason : "",
             visible : false,
+            disabled : true,
         }
     }
     showModal() {
@@ -28,14 +28,23 @@ class ReasonSelectComponent extends React.Component{
     handleOk(){
         if(!this.state.reason){
             message.error('请选择拒绝原因',2);
+        }else if(!this.state.disabled && !this.refs.other.value){
+            message.error('请选择拒绝原因',2);
         }else{
-            this.props.handleJJConfirm(this.state.reason);
+            this.props.handleJJConfirm(this.state.reason,this.refs.other.value);
         }
     }
     handleChange(value){
         this.setState({
             reason : value,
-        })
+        },()=>{
+            if(value === '0'){
+                this.setState({
+                    disabled : false,
+                })
+            }
+        });
+
     }
     render(){
         let reasonOption = [];
@@ -56,6 +65,7 @@ class ReasonSelectComponent extends React.Component{
                 >
                     {reasonOption}
                 </Select>
+                <input className="ant-input antd-input" ref="other" placeholder="请填写其他原因" style={{marginTop:"12px",width:"300px"}} disabled={this.state.disabled}/>
             </Modal>
         );
     }

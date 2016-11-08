@@ -4,13 +4,17 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import { connect } from 'react-redux';
-import { Breadcrumb, Icon,Button,Popover } from 'antd';
-
+import { Breadcrumb, Icon,Button } from 'antd';
+import { logoutRequest } from 'actions/UserAction';
 
 class NavContainer extends React.Component{
     constructor(props){
         super(props);
     }
+    logout(){
+        this.props.dispatch(logoutRequest());
+    }
+
     render(){
         const content = (
             <div>
@@ -42,21 +46,17 @@ class NavContainer extends React.Component{
                         </Breadcrumb>
                     </section>
                     <section className="userpanel-wrapper">
-                        <div id="message-reminder">
-                            <Button
-                            >
-                                <Icon type="texiaolingsheng" />
-                            </Button>
-                        </div>
-                        <Button
-                        >
-                            <Icon type="shuaxin" />
-                        </Button>
                         <Button
                             className="user-profile-toggle-botton"
                         >
                             <span className="text">{this.props.name}</span>
-                            <Icon type="xiangxiajiantou" className="arrow-down"></Icon>
+                        </Button>
+                        <Button
+                            className="user-profile-toggle-botton"
+                            onClick={this.logout.bind(this)}
+                        >
+                            <span className="text">退出</span>
+                            <Icon type="tuichu" className="arrow-down"></Icon>
                         </Button>
                     </section>
                 </div>

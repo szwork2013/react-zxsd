@@ -1,12 +1,11 @@
 @font-face {
   font-family: 'anticon';  /* project id："157396" */
-  src: url('//at.alicdn.com/t/font_7swqj3vfl0gujtt9.eot');
-  src: url('//at.alicdn.com/t/font_7swqj3vfl0gujtt9.eot') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_7swqj3vfl0gujtt9.woff') format('woff'),
-  url('//at.alicdn.com/t/font_7swqj3vfl0gujtt9.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_7swqj3vfl0gujtt9.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_cxiyph6dd39mgqfr.eot');
+  src: url('//at.alicdn.com/t/font_cxiyph6dd39mgqfr.eot') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_cxiyph6dd39mgqfr.woff') format('woff'),
+  url('//at.alicdn.com/t/font_cxiyph6dd39mgqfr.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_cxiyph6dd39mgqfr.svg#iconfont') format('svg');
 }
-
 
 
 
@@ -18,8 +17,9 @@
 .anticon-texiaolingsheng:before {content:"\e605" ;}
 .anticon-housunshouli:before {content:"\e603" ;}
 .anticon-yonghu:before {content:"\e600" ;}
-.anticon-dianhua:before {content:"\e601" ;}
+.anticon-guanli:before {content:"\e62a" ;}
 .anticon-sousuo:before {content:"\e60a" ;}
+.anticon-tuichu:before {content:"\343b" ;}
 
 
 

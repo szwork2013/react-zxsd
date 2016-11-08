@@ -362,6 +362,19 @@
 .@{sdslCls}{
   min-width: 1000px;
   .ant-table-body{
+    .yj-disable{
+      color:#ccc;
+      cursor:not-allowed;
+    }
+    .ant-btn{
+      color:@primary-color;
+      padding:0;
+      background-color:transparent;
+      border:none;
+    }
+    .ant-btn[disabled]{
+      color:#ccc;
+    }
     td.address{
       .table-address();
     }
@@ -492,4 +505,12 @@
       background-color: #CCCCCC;
     }
   }
+}
+@uncompatibleCls : uncompatible-wrapper;
+.@{uncompatibleCls}{
+  position: absolute;
+  top:30%;
+  width: 100%;
+  text-align: center;
+
 }

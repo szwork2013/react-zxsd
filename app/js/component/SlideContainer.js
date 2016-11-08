@@ -13,8 +13,9 @@ const SubMenu = Menu.SubMenu;
 class SlideContainer extends React.Component{
     constructor(props){
         super(props);
+        //console.log(this.props.authList[0].code+"|"+this.props.authList[0].name);
         this.state = {
-            current : this.props.authList[0].code+"|"+this.props.authList[0].name,
+            current : "0" ,
             openKeys : [],
         }
     }
