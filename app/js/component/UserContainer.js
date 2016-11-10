@@ -12,6 +12,7 @@ import { loadingAction, loadedAction } from 'actions/MainAction';
 import UserUpdateComponent from 'component/UserUpdateComponent';
 import {HEADURL} from 'core/Const';
 const Option = Select.Option;
+const ButtonGroup = Button.Group;
 
 class UserContainer extends React.Component{
     constructor(props){
@@ -125,10 +126,8 @@ class UserContainer extends React.Component{
     handleFileChange(info){
         if (info.file.status !== 'uploading') {
             this.props.dispatch(loadingAction());
-            //console.log(info.file, info.fileList);
         }
         if (info.file.status === 'done') {
-            console.log(info);
             this.props.dispatch(loadedAction());
             if(info.file.response.status == '2002'){
                 let _formData = new FormData();
@@ -154,6 +153,9 @@ class UserContainer extends React.Component{
             message.error('操作失败',2);
             //message.error(`${info.file.name} file upload failed.`);
         }
+    }
+    handleDownload(){
+        window.location.href = `${HEADURL}Uploads/upload/zxsdv1.0.xlsx`;
     }
     render(){
         let { selectedRowKeys, sortedInfo, filteredInfo } = this.state;
@@ -269,10 +271,9 @@ class UserContainer extends React.Component{
                                 Excel导入
                             </Button>
                         </Upload>
-
-                    </section>
-                    <section className="operation-btn-group">
-
+                        <Button type="ghost" style={{marginLeft:"12px"}}  icon="download" onClick={this.handleDownload.bind(this)}>
+                            模板下载
+                        </Button>
                     </section>
                 </div>
                 <Table

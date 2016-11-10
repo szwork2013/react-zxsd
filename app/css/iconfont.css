@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'anticon';  /* project id："157396" */
-  src: url('//at.alicdn.com/t/font_cxiyph6dd39mgqfr.eot');
-  src: url('//at.alicdn.com/t/font_cxiyph6dd39mgqfr.eot') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_cxiyph6dd39mgqfr.woff') format('woff'),
-  url('//at.alicdn.com/t/font_cxiyph6dd39mgqfr.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_cxiyph6dd39mgqfr.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_eiknizsy8hv6ajor.eot');
+  src: url('//at.alicdn.com/t/font_eiknizsy8hv6ajor.eot') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_eiknizsy8hv6ajor.woff') format('woff'),
+  url('//at.alicdn.com/t/font_eiknizsy8hv6ajor.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_eiknizsy8hv6ajor.svg#iconfont') format('svg');
 }
 
 
@@ -20,6 +20,7 @@
 .anticon-guanli:before {content:"\e62a" ;}
 .anticon-sousuo:before {content:"\e60a" ;}
 .anticon-tuichu:before {content:"\343b" ;}
+.anticon-logo:before {content:"\e67c" ;}
 
 
 

@@ -12,7 +12,7 @@ class UncompatibleContainer extends React.Component{
         return(
             <div className="uncompatible-wrapper">
                 <div >
-                    <Icon type="meh" style={{fontSize:"72px"}}></Icon>
+                    <Icon type="logo" style={{fontSize:"72px"}}></Icon>
                 </div>
                 <h1 style={{lineHeight:"64px",fontWeight:"normal"}}>您当前使用的浏览器版本过低, 请使用现代浏览器打开该网站</h1>
                 <p>推介的浏览器: Google Chrome | Apple Safari | FireFox | 360安全浏览器 | 360极速浏览器 | UC浏览器 </p>
