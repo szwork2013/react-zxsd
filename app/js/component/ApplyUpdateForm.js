@@ -114,7 +114,7 @@ class ApplyUpdateForm extends React.Component{
                             )}
                         </FormItem>
                         <FormItem
-                            id="type"
+                            id="qx"
                             label="贷款期限"
                             {...formItemLayout}
                         >

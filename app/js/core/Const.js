@@ -5,8 +5,8 @@
 /*********************
  * 1.接口地址头部
  * *******************/
-let $_SERVER = "http://";
-let $_DOMAIN = "www.rawwdl.com/";
+let $_SERVER = "https://";
+let $_DOMAIN = "app.rarcbank.com/";
 export const HEADURL = $_SERVER + $_DOMAIN;
 
 export const INITIAL_USER = 'initialUser';

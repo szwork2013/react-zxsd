@@ -88,7 +88,7 @@ class UserUpdateForm extends React.Component{
                             { required: true, len:6,message: '请填写密码并且大于6位' },
                         ],
                     })(
-                        <Input id="password" placeholder="请填写密码"  />
+                        <Input id="password" placeholder="请填写密码"   />
                     )}
                 </FormItem>
                 <FormItem

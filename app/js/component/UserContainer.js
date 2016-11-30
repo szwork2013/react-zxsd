@@ -205,9 +205,9 @@ class UserContainer extends React.Component{
             dataIndex:'rolename',
             key:'rolename',
         },{
-            title:'修改日期',
-            dataIndex:'addtime',
-            key:'addtime',
+            title:'登录日期',
+            dataIndex:'logintime',
+            key:'logintime',
         },{
             title:'是否启用',
             dataIndex:'status',
